@@ -189,7 +189,7 @@ public class PlayerControl : MonoBehaviour
         {
             Debug.Log("hit");
             var transform1 = transform;
-            transform1.localPosition = new Vector3(0, transform1.position.y, 0); 
+            transform1.localPosition = new Vector3(0, transform1.position.y, -100); 
         }
 
         if (other.gameObject.CompareTag("Finish"))
