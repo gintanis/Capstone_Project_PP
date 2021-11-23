@@ -3435,7 +3435,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966860475}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 17.876734, y: 211.1541, z: 1.8464813}
@@ -6518,7 +6518,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1903567207}
-  - component: {fileID: 1903567208}
   m_Layer: 5
   m_Name: Lives
   m_TagString: Untagged
@@ -6548,23 +6547,6 @@ RectTransform:
   m_AnchoredPosition: {x: 279.63696, y: 131}
   m_SizeDelta: {x: 238.8382, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1903567208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1903567206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85ace17d13ce0408cb0a354ee2c494da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lives: 3
-  livesImage:
-  - {fileID: 1544044845}
-  - {fileID: 685583243}
-  - {fileID: 1053470060}
 --- !u!1 &1951705139
 GameObject:
   m_ObjectHideFlags: 0

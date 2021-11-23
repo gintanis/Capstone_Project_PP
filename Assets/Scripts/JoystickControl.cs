@@ -42,7 +42,7 @@ public class JoystickControl : MonoBehaviour
         
      
 
-        
+     
         
         dirX = Vector3.right * (dynamicJoystick.Horizontal * 4f);
         dirY = Vector3.up * (dynamicJoystick.Vertical * 4f);
