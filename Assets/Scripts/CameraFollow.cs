@@ -6,43 +6,27 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
+    public float distance = 3.0f;
+    public float height = 3.0f;
+    public float damping = 5.0f;
+    public bool smoothRotation = true;
+    public bool followBehind = true;
+    public float rotationDamping = 10.0f;
 
-    public float smoothSpeed = 0.125f;
+    void Update () {
+        Vector3 wantedPosition;
+        if(followBehind)
+            wantedPosition = target.TransformPoint(0, height, -distance);
+        else
+            wantedPosition = target.TransformPoint(0, height, distance);
 
+        transform.position = Vector3.Lerp (transform.position, wantedPosition, Time.deltaTime * damping);
 
-    public float x;
-    public float y; 
-    public float z; 
-    //public Vector3 offset; 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    /*
-    void LateUpdate()
-    {
-        Vector3 desiredPos = target.position + offset;
-        Vector3 smoothedPos = Vector3.Lerp(transform.position, desiredPos, smoothSpeed);
-        transform.position = smoothedPos; 
-    }
-
-*/
-    public void LateUpdate()
-    {
-
-        var position = target.position;
-        
-        Vector3 smoothedPos = Vector3.Lerp(transform.position, position, smoothSpeed);
-       
-        
-        var temp = position.normalized;
-        temp.x = position.x - x;
-        temp.y = position.y  +- y;
-        temp.z = smoothedPos.z - z;
-        // Assign value to Camera position
-        transform.position = temp;
+        if (smoothRotation) {
+            Quaternion wantedRotation = Quaternion.LookRotation(target.position - transform.position, target.up);
+            //Quaternion ownRotation = Quaternion.RotateTowards;
+            transform.rotation = Quaternion.Slerp (transform.rotation, wantedRotation, Time.deltaTime * rotationDamping);
+        }
+        else transform.LookAt (target, target.up);
     }
 }

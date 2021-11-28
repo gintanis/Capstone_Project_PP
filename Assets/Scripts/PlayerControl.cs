@@ -29,8 +29,6 @@ public class PlayerControl : MonoBehaviour
 
     [Header("UI Stuff")] public GameObject b;
     public Text instructPlayer;
-    public GameObject h;
-    public Text heightVel;
     public MicController mC;
    
  
@@ -43,14 +41,15 @@ public class PlayerControl : MonoBehaviour
     public bool IsBreathingOut;
     private float micInput;
     public BreathControl bC;
-
-    public GameObject bControl;  
+    public GameObject bControl;
+    
     // Start is called before the first frame update
 
     [Header("Points")] public float points;
     public GameObject sBoard;
     public Text sText;
     public float counter;
+    
     
     
     
@@ -85,8 +84,7 @@ public class PlayerControl : MonoBehaviour
         
         
         instructPlayer = b.GetComponent<Text>(); 
-
-        heightVel = h.GetComponent<Text>();
+        
         sText = sBoard.GetComponent<Text>(); 
     }
 
@@ -114,17 +112,19 @@ public class PlayerControl : MonoBehaviour
 
 
         var position = rb.transform.position;
-        heightVel.text = "Height: " + Mathf.Round(position.y) + " " + "Distance: " + Mathf.Round(position.z);
-
+      
 
         rb.AddForce(transform.forward * SpeedZ);
   
         //change later
+       
+            
+        mC.MicLoudness = mC.LevelMax(); 
+        Debug.Log(micLoud);
         if (micLoud >= .025f)
         {
             rb.AddForce(transform.up * SpeedY);
             IsBreathingOut = true;
-
             if (IsBreathingOut && bC.outB < 8)
             {
                 points += Time.deltaTime * 10;
@@ -192,10 +192,6 @@ public class PlayerControl : MonoBehaviour
             transform1.localPosition = new Vector3(0, transform1.position.y, -100); 
         }
 
-        if (other.gameObject.CompareTag("Finish"))
-        {
-            Debug.Log("hit circle");
-            points +=  25; 
-        }
+     
     }
 }
