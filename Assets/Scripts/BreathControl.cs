@@ -25,6 +25,9 @@ public class BreathControl : MonoBehaviour
     public PlayerControl pC;
     public GameObject pControl; 
 
+    public MicController mC;
+    public GameObject micControl;  
+
 
     private void Awake()
     {
@@ -39,7 +42,7 @@ public class BreathControl : MonoBehaviour
         _timers.Add(holdB);
         _timers.Add(outB);
         
-        
+        mC = micControl.GetComponent<MicController>(); 
         pC = pControl.GetComponent<PlayerControl>();
     }
 
@@ -75,18 +78,22 @@ public class BreathControl : MonoBehaviour
 
         if (outBreath)
         {
+         
+            mC.InitMic(); 
             _timers[0] = inB;
             _timers[1] = holdB; 
             
             _timers[2] -= Time.deltaTime;
             bT.text = "Out: " + Math.Round(_timers[2]);
         }
+    
         if (outBreath && !pC.IsBreathingOut)
         {
             deductCounter += 1 * Time.deltaTime;
         }
         if (_timers[2] <= 0)
         {
+          
             outBreath = false;
             pC.points -= deductCounter * pointDeduct; 
             deductCounter = 0; 
