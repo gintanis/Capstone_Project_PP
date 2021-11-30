@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -100,7 +101,7 @@ public class PlayerControl : MonoBehaviour
     public void Update()
     {
 
-   
+        Debug.Log(rb.position.y); 
     }
 
     public void FixedUpdate()
@@ -119,10 +120,12 @@ public class PlayerControl : MonoBehaviour
         //change later
        
             
-        mC.MicLoudness = mC.LevelMax(); 
-        Debug.Log(micLoud);
+   
+
+
         if (micLoud >= .025f)
         {
+            
             rb.AddForce(transform.up * SpeedY);
             IsBreathingOut = true;
             if (IsBreathingOut && bC.outB < 8)
@@ -150,9 +153,7 @@ public class PlayerControl : MonoBehaviour
             {
                 lives -= 1;
 
-               
                 
-
             }
 
         }

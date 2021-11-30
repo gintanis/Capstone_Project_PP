@@ -56,9 +56,18 @@ public class MicController : MonoBehaviour
         public float MicLoudness;
  
         private string _device;
+
+
+        public BreathControl bC; 
+        public GameObject breathControl; 
+
+        public void Awake()
+        {
+            bC = breathControl.GetComponent<BreathControl>();
+        }
      
         //mic initialization
-        void InitMic(){
+        public void InitMic(){
             _device ??= Microphone.devices[0];
             _clipRecord = GetComponent<AudioClip>(); 
             _clipRecord = Microphone.Start(_device, true, 999, 44100);
@@ -101,23 +110,33 @@ public class MicController : MonoBehaviour
             // pass the value to a static var so we can access it from anywhere
             //MicLoudness = LevelMax ();
             //Debug.Log(MicLoudness);
+
+            while (bC.outBreath)
+            {
+                InitMic();
+                _isInitialized=true;
+            }
+            if (bC.outBreath == false)
+            {
+                StopMicrophone(); 
+            }
  
         }
      
         bool _isInitialized;
         // start mic when scene starts
-        void OnEnable()
+       
+       /* public void OnEnable()
         {
-            InitMic();
-            _isInitialized=true;
+
         }
      
         //stop mic when loading a new level or quit application
-        void OnDisable()
+        public void OnDisable()
         {
             StopMicrophone();
         }
-     
+     */
         void OnDestroy()
         {
             StopMicrophone();

@@ -45,9 +45,7 @@ public class JoystickControl : MonoBehaviour
     public void FixedUpdate()
     {
 
-        var tiltX = Input.GetAxis("Vertical") * tilt;
-        var tiltY = Input.GetAxis("Horizontal") * tilt;
-        
+    
      
 
      

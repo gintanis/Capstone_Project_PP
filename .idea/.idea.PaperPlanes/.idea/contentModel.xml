@@ -37,6 +37,7 @@
           <e p="MicController.cs" t="Include" />
           <e p="PlayerControl.cs" t="Include" />
         </e>
+        <e p="StartGame.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
