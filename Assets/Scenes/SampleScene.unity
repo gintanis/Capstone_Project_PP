@@ -2179,7 +2179,7 @@ Transform:
   - {fileID: 1976433515}
   - {fileID: 1692692333}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &764110416
 GameObject:
@@ -3487,10 +3487,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2002717288}
-  smoothSpeed: 0.9
-  x: -9
-  y: -3
-  z: -0.5
+  distance: 3
+  height: 3
+  damping: 5
+  smoothRotation: 1
+  followBehind: 1
+  rotationDamping: 10
 --- !u!1 &963571394
 GameObject:
   m_ObjectHideFlags: 0
@@ -4477,7 +4479,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214962193
 GameObject:
@@ -5491,21 +5493,27 @@ MonoBehaviour:
   y: 0
   SpeedZ: 1.5
   SpeedY: 1
+  lives: 3
+  livesImage: []
+  L1: {fileID: 0}
+  L2: {fileID: 0}
+  L3: {fileID: 0}
   b: {fileID: 1149654824}
   instructPlayer: {fileID: 1149654826}
-  l: {fileID: 1450391546}
-  loudness: {fileID: 1450391548}
-  h: {fileID: 627555733}
-  heightVel: {fileID: 627555735}
-  breathController: {fileID: 1149654824}
   mC: {fileID: 0}
   inB: 0
   holdB: 0
   outB: 0
   _timers: []
-  IsBreathingIn: 0
   IsBreathingOut: 0
-  IsHolding: 0
+  bC: {fileID: 0}
+  bControl: {fileID: 0}
+  heightT: {fileID: 0}
+  height: {fileID: 0}
+  points: 0
+  sBoard: {fileID: 0}
+  sText: {fileID: 0}
+  counter: 0
 --- !u!114 &1458085736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5519,6 +5527,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MicLoudness: 0
+  bC: {fileID: 0}
+  breathControl: {fileID: 0}
 --- !u!1 &1458555900
 GameObject:
   m_ObjectHideFlags: 0
@@ -6978,7 +6988,7 @@ Transform:
   - {fileID: 1458085734}
   - {fileID: 1094590302}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2093171942
 GameObject:

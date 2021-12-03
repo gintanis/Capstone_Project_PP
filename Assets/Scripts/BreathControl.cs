@@ -74,18 +74,19 @@ public class BreathControl : MonoBehaviour
         {
             
             outBreath = true; 
+           
         }
 
         if (outBreath)
         {
          
-            mC.InitMic(); 
             _timers[0] = inB;
             _timers[1] = holdB; 
             
             _timers[2] -= Time.deltaTime;
             bT.text = "Out: " + Math.Round(_timers[2]);
         }
+  
     
         if (outBreath && !pC.IsBreathingOut)
         {
@@ -93,7 +94,7 @@ public class BreathControl : MonoBehaviour
         }
         if (_timers[2] <= 0)
         {
-          
+
             outBreath = false;
             pC.points -= deductCounter * pointDeduct; 
             deductCounter = 0; 

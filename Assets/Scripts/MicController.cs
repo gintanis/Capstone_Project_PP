@@ -73,11 +73,11 @@ public class MicController : MonoBehaviour
             _clipRecord = Microphone.Start(_device, true, 999, 44100);
         }
      
-        void StopMicrophone()
+        public void StopMicrophone()
         {
             Microphone.End(_device);
         }
-     
+  
  
         private AudioClip _clipRecord;
         int _sampleWindow = 128;
@@ -106,37 +106,35 @@ public class MicController : MonoBehaviour
      
         void Update()
         {
+            Debug.Log(MicLoudness);
             // levelMax equals to the highest normalized value power 2, a small number because < 1
             // pass the value to a static var so we can access it from anywhere
-            //MicLoudness = LevelMax ();
+            MicLoudness = LevelMax ();
             //Debug.Log(MicLoudness);
 
-            while (bC.outBreath)
-            {
-                InitMic();
-                _isInitialized=true;
-            }
-            if (bC.outBreath == false)
-            {
-                StopMicrophone(); 
-            }
  
         }
      
-        bool _isInitialized;
+        public bool _isInitialized;
         // start mic when scene starts
        
-       /* public void OnEnable()
+       
+    
+        public void OnEnable()
         {
+             _isInitialized = true; 
+            InitMic();
 
         }
      
-        //stop mic when loading a new level or quit application
+
+ 
+            //stop mic when loading a new level or quit application
         public void OnDisable()
         {
             StopMicrophone();
         }
-     */
+     
         void OnDestroy()
         {
             StopMicrophone();

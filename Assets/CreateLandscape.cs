@@ -5,6 +5,7 @@ using UnityEngine;
 public class CreateLandscape : MonoBehaviour
 {
 
+
     [Header("Plane")]
     
 
@@ -34,9 +35,6 @@ public class CreateLandscape : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void LateUpdate()
-    {
-        
-    }
+
+
 }
