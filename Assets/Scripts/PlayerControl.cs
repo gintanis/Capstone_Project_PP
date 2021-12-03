@@ -206,7 +206,7 @@ public class PlayerControl : MonoBehaviour
 
     public void ParticleBurst()
     {
-        Vector3 localPos = new Vector3(rb.position.x, rb.position.y, rb.position.z - 5f);
+        Vector3 localPos = new Vector3(rb.position.x, rb.position.y, rb.position.z - .5f);
         Instantiate(pS, localPos, Quaternion.identity); 
     }
 
