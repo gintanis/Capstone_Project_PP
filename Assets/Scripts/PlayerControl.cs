@@ -43,6 +43,8 @@ public class PlayerControl : MonoBehaviour
     private float micInput;
     public BreathControl bC;
     public GameObject bControl;
+    public Text heightT; 
+    public GameObject height; 
     
     // Start is called before the first frame update
 
@@ -52,7 +54,8 @@ public class PlayerControl : MonoBehaviour
     public float counter;
     
     
-    
+    public GameObject particle; 
+    public ParticleSystem pS; 
     
     
     public void Awake()
@@ -73,6 +76,7 @@ public class PlayerControl : MonoBehaviour
         _timers.Add(outB);
 
         
+        heightT = height.GetComponent<Text>(); 
         
         /*
          * increment = .5f;
@@ -93,7 +97,8 @@ public class PlayerControl : MonoBehaviour
     {
         mC = micControl.GetComponent<MicController>(); 
         rb = playerRB.GetComponent<Rigidbody>();
-        bC = bControl.GetComponent<BreathControl>(); 
+        bC = bControl.GetComponent<BreathControl>();
+        pS = particle.GetComponent<ParticleSystem>();  
 
 
     }
@@ -102,6 +107,7 @@ public class PlayerControl : MonoBehaviour
     {
 
         Debug.Log(rb.position.y); 
+        heightT.text = "Height: " + rb.position.y.ToString("F1");
     }
 
     public void FixedUpdate()
@@ -125,7 +131,8 @@ public class PlayerControl : MonoBehaviour
 
         if (micLoud >= .025f)
         {
-            
+            ParticleBurst(); 
+
             rb.AddForce(transform.up * SpeedY);
             IsBreathingOut = true;
             if (IsBreathingOut && bC.outB < 8)
@@ -137,6 +144,7 @@ public class PlayerControl : MonoBehaviour
         else
         {
             IsBreathingOut = false; 
+ 
         }
         
         
@@ -190,9 +198,17 @@ public class PlayerControl : MonoBehaviour
         {
             Debug.Log("hit");
             var transform1 = transform;
-            transform1.localPosition = new Vector3(0, transform1.position.y, -100); 
+            transform1.localPosition = new Vector3(0, 7, -150); 
         }
 
      
     }
+
+    public void ParticleBurst()
+    {
+        Vector3 localPos = new Vector3(rb.position.x, rb.position.y, rb.position.z - .5f);
+        Instantiate(pS, localPos, Quaternion.identity); 
+    }
+
+
 }
